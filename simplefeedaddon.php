@@ -28,7 +28,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
 //------------------------------------------
 if (class_exists("GFForms")) {
-    GFForms::include_addon_framework();
+    GFForms::include_feed_addon_framework();
 
     class GFSimpleFeedAddOn extends GFFeedAddOn {
 
