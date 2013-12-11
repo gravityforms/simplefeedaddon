@@ -78,6 +78,14 @@ if (class_exists("GFForms")) {
                             )
                         ),
                         array(
+                            "name" => "mappedFields",
+                            "label" => "Map Fields",
+                            "type" => "field_map",
+                            "field_map" => array(   array("name" => "email", "label" => "Email", "required" => 0),
+                                                    array("name" => "name", "label" => "Name", "required" => 0)
+                            )
+                        ),
+                        array(
                             "name" => "condition",
                             "label" => __("Condition", "simplefeedaddon"),
                             "type" => "feed_condition",
@@ -99,34 +107,6 @@ if (class_exists("GFForms")) {
         // customize the value of mytextbox before it's rendered to the list
         public function get_column_value_mytextbox($feed){
             return "<b>" . $feed["meta"]["mytextbox"] ."</b>";
-        }
-
-        public function settings_my_custom_field_type(){
-            ?>
-            <div>
-                My custom field contains a few settings:
-            </div>
-            <?php
-                $this->settings_text(
-                    array(
-                        "label" => "A textbox sub-field",
-                        "name" => "subtext",
-                        "default_value" => "change me"
-                    )
-                );
-                $this->settings_checkbox(
-                    array(
-                        "label" => "A checkbox sub-field",
-                        "choices" => array(
-                            array(
-                                "label" => "Activate",
-                                "name" => "subcheck",
-                                "default_value" => true
-                            )
-
-                        )
-                    )
-                );
         }
 
         public function plugin_settings_fields() {
@@ -185,6 +165,16 @@ if (class_exists("GFForms")) {
             return array_merge(parent::styles(), $styles);
         }
 
+        public function process_feed($feed, $entry, $form){
+            $feedName = $feed["meta"]["feedName"];
+            $mytextbox = $feed["meta"]["mytextbox"];
+            $checkbox = $feed["meta"]["mycheckbox"];
+            $mapped_email = $feed["meta"]["mappedFields_email"];
+            $mapped_name = $feed["meta"]["mappedFields_name"];
+
+            $email = $entry[$mapped_email];
+            $name = $entry[$mapped_name];
+        }
     }
 
     new GFSimpleFeedAddOn();
