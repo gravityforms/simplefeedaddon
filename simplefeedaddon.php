@@ -43,7 +43,13 @@ if (class_exists("GFForms")) {
         public function plugin_page() {
             ?>
             This page appears in the Forms menu
-        <?php
+            <?php
+            
+            //loading Gravity Forms tooltips
+            require_once(GFCommon::get_base_path() . "/tooltips.php");
+            
+            // Show default feed list
+            self::feed_list_page();
         }
 
         public function feed_settings_fields() {
