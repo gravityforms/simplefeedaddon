@@ -97,7 +97,7 @@ if (class_exists("GFForms")) {
             );
         }
 
-        protected function feed_list_columns() {
+        public function feed_list_columns() {
             return array(
                 'feedName' => __('Name', 'simplefeedaddon'),
                 'mytextbox' => __('My Textbox', 'simplefeedaddon')
