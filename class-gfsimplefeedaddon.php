@@ -7,7 +7,6 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 	protected $_version = GF_SIMPLE_FEED_ADDON_VERSION;
 	protected $_min_gravityforms_version = '1.9.16';
 	protected $_slug = 'simplefeedaddon';
-	protected $_path;
 	protected $_full_path = __FILE__;
 	protected $_title = 'Gravity Forms Simple Feed Add-On';
 	protected $_short_title = 'Simple Feed Add-On';
