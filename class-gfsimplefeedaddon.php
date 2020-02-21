@@ -241,6 +241,35 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 						),
 					),
 					array(
+						'name'                => 'genericMappings',
+						'label'               => esc_html__( 'Generic Mapping', 'simplefeedaddon' ),
+						'type'                => 'generic_map',
+						'enable_custom_key'   => true,
+						'enable_custom_value' => true,
+						'key_field_title'     => esc_html__( 'Key', 'simplefeedaddon' ),
+						'key_choices'         => array(
+							array(
+								'name'  => 'k1',
+								'label' => esc_html__( 'Key 1', 'simplefeedaddon' ),
+							),
+							array(
+								'name'  => 'k2',
+								'label' => esc_html__( 'Key 2', 'simplefeedaddon' ),
+							)
+						),
+						'value_field_title'   => esc_html__( 'Value', 'simplefeedaddon' ),
+						'value_choices'       => array(
+							array(
+								'name'  => 'v1',
+								'label' => esc_html__( 'Value 1', 'simplefeedaddon' ),
+							),
+							array(
+								'name'  => 'v2',
+								'label' => esc_html__( 'Value 2', 'simplefeedaddon' ),
+							)
+						),
+					),
+					array(
 						'name'           => 'condition',
 						'label'          => esc_html__( 'Condition', 'simplefeedaddon' ),
 						'type'           => 'feed_condition',
