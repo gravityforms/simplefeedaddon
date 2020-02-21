@@ -5,7 +5,7 @@ GFForms::include_feed_addon_framework();
 class GFSimpleFeedAddOn extends GFFeedAddOn {
 
 	protected $_version = GF_SIMPLE_FEED_ADDON_VERSION;
-	protected $_min_gravityforms_version = '1.9.16';
+	protected $_min_gravityforms_version = '2.2';
 	protected $_slug = 'simplefeedaddon';
 	protected $_path = 'simplefeedaddon/simplefeedaddon.php';
 	protected $_full_path = __FILE__;
