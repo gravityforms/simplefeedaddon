@@ -241,33 +241,59 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 						),
 					),
 					array(
-						'name'                => 'genericMappings',
-						'label'               => esc_html__( 'Generic Mapping', 'simplefeedaddon' ),
-						'type'                => 'generic_map',
-						'enable_custom_key'   => true,
-						'enable_custom_value' => true,
-						'key_field_title'     => esc_html__( 'Key', 'simplefeedaddon' ),
-						'key_choices'         => array(
-							array(
-								'name'  => 'k1',
-								'label' => esc_html__( 'Key 1', 'simplefeedaddon' ),
+						'name'        => 'genericMappings',
+						'label'       => esc_html__( 'Generic Mapping', 'simplefeedaddon' ),
+						'type'        => 'generic_map',
+						'merge_tags'  => true,
+						'key_field'   => array(
+							'title'        => esc_html__( 'Key', 'simplefeedaddon' ),
+							'custom_value' => true,
+							'choices'      => array(
+								array(
+									'label'   => esc_html__( 'Group 1', 'simplefeedaddon' ),
+									'choices' => array(
+										array(
+											'label' => esc_html__( 'Key 1', 'simplefeedaddon' ),
+											'value' => 'k1'
+										),
+									)
+								),
+								array(
+									'label'   => esc_html__( 'Group 2', 'simplefeedaddon' ),
+									'choices' => array(
+										array(
+											'label' => esc_html__( 'Key 2', 'simplefeedaddon' ),
+											'value' => 'k2'
+										),
+									)
+								),
 							),
-							array(
-								'name'  => 'k2',
-								'label' => esc_html__( 'Key 2', 'simplefeedaddon' ),
-							)
 						),
-						'value_field_title'   => esc_html__( 'Value', 'simplefeedaddon' ),
-						'value_choices'       => array(
-							array(
-								'name'  => 'v1',
-								'label' => esc_html__( 'Value 1', 'simplefeedaddon' ),
+						'value_field' => array(
+							'title'        => esc_html__( 'Value', 'simplefeedaddon' ),
+							'custom_value' => true,
+							'choices'      => array(
+								array(
+									'label'   => esc_html__( 'Form Fields', 'simplefeedaddon' ),
+									'choices' => $this->get_field_map_choices( rgget( 'id' ) ),
+								),
+								array(
+									'label'   => esc_html__( 'Other', 'simplefeedaddon' ),
+									'choices' => array(
+										array(
+											'label' => esc_html__( 'Value 1', 'simplefeedaddon' ),
+											'value' => 'v1'
+										),
+										array(
+											'label' => esc_html__( 'Value 2', 'simplefeedaddon' ),
+											'value' => 'v2'
+										),
+									)
+								),
 							),
-							array(
-								'name'  => 'v2',
-								'label' => esc_html__( 'Value 2', 'simplefeedaddon' ),
-							)
 						),
+//						'enable_custom_key'   => true,
+//						'enable_custom_value' => true,
 					),
 					array(
 						'name'           => 'condition',
