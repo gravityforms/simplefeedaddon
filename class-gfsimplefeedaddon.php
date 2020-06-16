@@ -187,65 +187,99 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 	public function feed_settings_fields() {
 		return array(
 			array(
-				'title'  => esc_html__( 'Simple Feed Settings', 'simplefeedaddon' ),
-				'fields' => array(
+				'title'    => __( 'Tab One', 'simplefeedaddon' ),
+				'sections' => array(
 					array(
-						'label'   => esc_html__( 'Feed name', 'simplefeedaddon' ),
-						'type'    => 'text',
-						'name'    => 'feedName',
-						'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
-						'class'   => 'small',
-					),
-					array(
-						'label'   => esc_html__( 'Textbox', 'simplefeedaddon' ),
-						'type'    => 'text',
-						'name'    => 'mytextbox',
-						'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
-						'class'   => 'small',
-					),
-					array(
-						'label'   => esc_html__( 'My checkbox', 'simplefeedaddon' ),
-						'type'    => 'checkbox',
-						'name'    => 'mycheckbox',
-						'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
-						'choices' => array(
+						'title'  => esc_html__( 'Simple Feed Settings', 'simplefeedaddon' ),
+						'fields' => array(
 							array(
-								'label' => esc_html__( 'Enabled', 'simplefeedaddon' ),
-								'name'  => 'mycheckbox',
-							),
-						),
-					),
-					array(
-						'name'      => 'mappedFields',
-						'label'     => esc_html__( 'Map Fields', 'simplefeedaddon' ),
-						'type'      => 'field_map',
-						'field_map' => array(
-							array(
-								'name'       => 'email',
-								'label'      => esc_html__( 'Email', 'simplefeedaddon' ),
-								'required'   => 0,
-								'field_type' => array( 'email', 'hidden' ),
+								'label'   => esc_html__( 'Feed name', 'simplefeedaddon' ),
+								'type'    => 'text',
+								'name'    => 'feedName',
 								'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
+								'class'   => 'small',
 							),
 							array(
-								'name'     => 'name',
-								'label'    => esc_html__( 'Name', 'simplefeedaddon' ),
-								'required' => 0,
+								'label'   => esc_html__( 'Textbox', 'simplefeedaddon' ),
+								'type'    => 'text',
+								'name'    => 'mytextbox',
+								'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
+								'class'   => 'small',
 							),
 							array(
-								'name'       => 'phone',
-								'label'      => esc_html__( 'Phone', 'simplefeedaddon' ),
-								'required'   => 0,
-								'field_type' => 'phone',
+								'label' => esc_html__( 'Show Tab Two?', 'simplefeedaddon' ),
+								'type'  => 'toggle',
+								'name'  => 'showTabTwo',
+								'class' => 'small',
 							),
 						),
 					),
+				),
+			),
+			array(
+				'title'      => __( 'Tab Two', 'simplefeedaddon' ),
+				'dependency' => array(
+					'live'   => true,
+					'fields' => array(
+						array(
+							'field' => 'showTabTwo',
+						),
+					),
+				),
+				'sections'   => array(
 					array(
-						'name'           => 'condition',
-						'label'          => esc_html__( 'Condition', 'simplefeedaddon' ),
-						'type'           => 'feed_condition',
-						'checkbox_label' => esc_html__( 'Enable Condition', 'simplefeedaddon' ),
-						'instructions'   => esc_html__( 'Process this simple feed if', 'simplefeedaddon' ),
+						'fields' => array(
+							array(
+								'label'    => esc_html__( 'Required Field', 'simplefeedaddon' ),
+								'type'     => 'text',
+								'name'     => 'requiredField',
+								'required' => true,
+							),
+							array(
+								'label'   => esc_html__( 'My checkbox', 'simplefeedaddon' ),
+								'type'    => 'checkbox',
+								'name'    => 'mycheckbox',
+								'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
+								'choices' => array(
+									array(
+										'label' => esc_html__( 'Enabled', 'simplefeedaddon' ),
+										'name'  => 'mycheckbox',
+									),
+								),
+							),
+							array(
+								'name'      => 'mappedFields',
+								'label'     => esc_html__( 'Map Fields', 'simplefeedaddon' ),
+								'type'      => 'field_map',
+								'field_map' => array(
+									array(
+										'name'       => 'email',
+										'label'      => esc_html__( 'Email', 'simplefeedaddon' ),
+										'required'   => 0,
+										'field_type' => array( 'email', 'hidden' ),
+										'tooltip'    => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
+									),
+									array(
+										'name'     => 'name',
+										'label'    => esc_html__( 'Name', 'simplefeedaddon' ),
+										'required' => 0,
+									),
+									array(
+										'name'       => 'phone',
+										'label'      => esc_html__( 'Phone', 'simplefeedaddon' ),
+										'required'   => 0,
+										'field_type' => 'phone',
+									),
+								),
+							),
+							array(
+								'name'           => 'condition',
+								'label'          => esc_html__( 'Condition', 'simplefeedaddon' ),
+								'type'           => 'feed_condition',
+								'checkbox_label' => esc_html__( 'Enable Condition', 'simplefeedaddon' ),
+								'instructions'   => esc_html__( 'Process this simple feed if', 'simplefeedaddon' ),
+							),
+						),
 					),
 				),
 			),
