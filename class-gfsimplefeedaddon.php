@@ -148,6 +148,17 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 		return array_merge( parent::styles(), $styles );
 	}
 
+	public function plugin_help_links() {
+
+		return array(
+			array(
+				'url'  => 'http://yourpluginsite.com',
+				'text' => __( 'Plugin Documentation', 'textdomain' ),
+				'icon' => '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>',
+			),
+		);
+	}
+
 	// # ADMIN FUNCTIONS -----------------------------------------------------------------------------------------------
 
 	/**
@@ -155,6 +166,8 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 	 */
 	public function plugin_page() {
 		echo 'This page appears in the Forms menu';
+
+		$this->render_beacon();
 	}
 
 	/**
