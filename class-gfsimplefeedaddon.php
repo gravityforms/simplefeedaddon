@@ -212,6 +212,12 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 								'name'  => 'showTabTwo',
 								'class' => 'small',
 							),
+							array(
+								'label' => esc_html__( 'Another Show Tab Two?', 'simplefeedaddon' ),
+								'type'  => 'toggle',
+								'name'  => 'anotherShowTabTwo',
+								'class' => 'small',
+							),
 						),
 					),
 				),
@@ -219,10 +225,14 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 			array(
 				'title'      => __( 'Tab Two', 'simplefeedaddon' ),
 				'dependency' => array(
-					'live'   => true,
-					'fields' => array(
+					'live'     => true,
+					'operator' => 'ANY',
+					'fields'   => array(
 						array(
 							'field' => 'showTabTwo',
+						),
+						array(
+							'field' => 'anotherShowTabTwo',
 						),
 					),
 				),
