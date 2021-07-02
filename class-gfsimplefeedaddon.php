@@ -225,7 +225,7 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 								'label'      => esc_html__( 'Email', 'simplefeedaddon' ),
 								'required'   => 0,
 								'field_type' => array( 'email', 'hidden' ),
-								'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
+								'tooltip'    => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
 							),
 							array(
 								'name'     => 'name',
@@ -239,6 +239,13 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 								'field_type' => 'phone',
 							),
 						),
+					),
+					array(
+						'name'     => 'myTime',
+						'type'     => 'date_time',
+						'label'    => esc_html__( 'Date/Time', 'gravityforms' ),
+						'tooltip'  => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
+						'required' => 0,
 					),
 					array(
 						'name'           => 'condition',
