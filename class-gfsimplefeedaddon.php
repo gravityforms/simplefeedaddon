@@ -179,6 +179,69 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 		);
 	}
 
+	public function get_fields( $form ) {
+		return array(
+			array(
+				'title'  => esc_html__( 'Simple Feed Form Settings', 'gravityforms' ),
+				'fields' => array(
+					array(
+						'name'  => 'test1',
+						'label' => esc_html__( 'A field', 'gravityforms' ),
+						'type'  => 'text',
+					),
+					array(
+						'name'  => 'test2',
+						'label' => esc_html__( 'Another field', 'gravityforms' ),
+						'type'  => 'text',
+					),
+				),
+			),
+		);
+	}
+
+	public function form_settings( $form ) {
+
+		if ( rgget( 'settingstype' ) == 'form' ) {
+			unset( $_GET['settingstype'] );
+			$params = http_build_query( $_GET );
+			echo '<a class="button primary large" href="' . admin_url( 'admin.php?' . $params ) . '">Go To Feed Settings</a>';
+
+			$renderer = new Gravity_Forms\Gravity_Forms\Settings\Settings(
+				array(
+					'capability'     => $this->_capabilities_form_settings,
+					'fields'         => $this->get_fields( $form ),
+					'initial_values' => $this->get_form_settings( $form ),
+					'save_callback'  => function( $values ) use ( $form ) {
+
+						$this->save_form_settings( $form, $values );
+					},
+					'after_fields'   => function() use ( $form ) {
+
+						printf(
+							'<script type="text/javascript">var form = %s;</script>',
+							wp_json_encode( $form )
+						);
+					},
+				)
+			);
+			$renderer->render();
+		} else {
+			$params = http_build_query( array_merge( $_GET, array( 'settingstype' => 'form' ) ) );
+			echo '<a class="button primary large" href="' . admin_url( 'admin.php?' . $params ) . '">Go To Form Settings</a>';
+			if ( ! $this->_multiple_feeds || $this->is_detail_page() ) {
+
+				// feed edit page
+				$feed_id = $this->_multiple_feeds ? $this->get_current_feed_id() : $this->get_default_feed_id( $form['id'] );
+
+				$this->feed_edit_page( $form, $feed_id );
+			} else {
+				// feed list UI
+				$this->feed_list_page( $form );
+			}
+		}
+
+	}
+
 	/**
 	 * Configures the settings which should be rendered on the feed edit page in the Form Settings > Simple Feed Add-On area.
 	 *
