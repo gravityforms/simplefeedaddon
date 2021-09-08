@@ -291,4 +291,8 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 		return true;
 	}
 
+	public function uninstall_message() {
+		return esc_html__( 'Simple Feed Add On is special and has a custom uninstall message', 'simplefeedaddon' );
+	}
+
 }
