@@ -176,6 +176,109 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 					),
 				),
 			),
+			array(
+				'title'  => 'Live Dependency Fields',
+				'fields' => array(
+					array(
+						'name'    => 'enable_message',
+						'label'   => esc_html__( 'Enable Message', 'adminsinglefeedtester' ),
+						'type'    => 'checkbox',
+						'onclick' => "jQuery(this).closest('form').submit();",
+						'choices' => array(
+							array(
+								'label' => esc_html__( 'Enable', 'adminsinglefeedtester' ),
+								'name'  => 'enable',
+							),
+						),
+					),
+					array(
+						'name'       => 'message_text',
+						'label'      => esc_html__( 'Message Text', 'adminsinglefeedtester' ),
+						'type'       => 'textarea',
+						'dependency' =>  array(
+							'live'   => true,
+							'fields' => array(
+								array(
+									'field' => 'enable_message',
+								),
+							),
+						),
+					),
+				),
+			),
+			array(
+				'id' => 'checkbox_test',
+				'title' => __( 'Checkbox Fields Test', 'gravityforms' ),
+				'fields' => 		array(
+					array(
+						'name'        => 'checkbox_array',
+						'type'        => 'checkbox',
+						'data_format' => 'array',
+						'label'       => esc_html__( 'Checkbox Array', 'gravityforms' ),
+						'choices'     => array(
+							array(
+								'name' => 'array_item_1',
+								'label' => __( 'Array Item 1', 'gravityforms' ),
+							),
+							array(
+								'name' => 'array_item_2',
+								'label' => __( 'Array Item 2', 'gravityforms' ),
+							),
+							array(
+								'name' => 'array_item_3',
+								'label' => __( 'Array Item 3', 'gravityforms' ),
+							),
+							array(
+								'name' => 'array_item_4',
+								'label' => __( 'Array Item 4', 'gravityforms' ),
+							),
+							array(
+								'name' => 'array_item_5',
+								'label' => __( 'Array Item 5', 'gravityforms' ),
+							),
+						),
+					),
+					array(
+						'name' => 'checkbox',
+						'type' => 'checkbox',
+						'label' => '"Normal" Checkbox',
+						'choices' => array(
+							array(
+								'name'  => 'checkbox',
+								'label' => __( 'Check this box', 'gravityforms' ),
+							),
+							array(
+								'name'  => 'checkbox2',
+								'label' => __( 'And/or this one', 'gravityforms' ),
+							),
+						),
+					),
+					array(
+						'name' => 'checkbox_select',
+						'type' => 'checkbox_and_select',
+						'label' => 'Checkbox and Select',
+						'checkbox' => array(
+							'name'  => 'checkbox',
+							'label' => 'Checkbox',
+						),
+						'select' => array(
+							'name'    => 'select',
+							'type'    => 'select',
+							'label'   => 'Select',
+							'choices' => array(
+								array(
+									'label' => 'One',
+									'value' => 'one',
+								),
+								array(
+									'label' => 'Two',
+									'value' => 'two',
+								),
+							),
+						),
+					),
+				),
+			),
 		);
 	}
 
