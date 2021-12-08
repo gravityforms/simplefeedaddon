@@ -33,7 +33,6 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 	public function init() {
 
 		parent::init();
-
 		$this->add_delayed_payment_support(
 			array(
 				'option_label' => esc_html__( 'Subscribe contact to service x only when payment is received.', 'simplefeedaddon' )
@@ -187,68 +186,54 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 	public function feed_settings_fields() {
 		return array(
 			array(
-				'title'  => esc_html__( 'Simple Feed Settings', 'simplefeedaddon' ),
-				'fields' => array(
+				'title'  	=> esc_html__( 'Constituent Details', 'bloomerangaddon' ),
+				'fields' 	=> array(
 					array(
-						'label'   => esc_html__( 'Feed name', 'simplefeedaddon' ),
-						'type'    => 'text',
-						'name'    => 'feedName',
-						'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
-						'class'   => 'small',
-					),
-					array(
-						'label'   => esc_html__( 'Textbox', 'simplefeedaddon' ),
-						'type'    => 'text',
-						'name'    => 'mytextbox',
-						'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
-						'class'   => 'small',
-					),
-					array(
-						'label'   => esc_html__( 'My checkbox', 'simplefeedaddon' ),
-						'type'    => 'checkbox',
-						'name'    => 'mycheckbox',
-						'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
-						'choices' => array(
+						'name'		=> 'type',
+						'type'     	=> 'select',
+						'label'     => esc_html__( 'Constituent Type', 'bloomerangaddon' ),
+						'required'  => true,
+						'onchange' 	=> "jQuery(this).parents('form').submit();",
+						'choices'	=> array(
 							array(
-								'label' => esc_html__( 'Enabled', 'simplefeedaddon' ),
-								'name'  => 'mycheckbox',
+								'label' => esc_html__( 'Select a type', 'bloomerangaddon' ),
+								'value' => '',
 							),
+							array(
+								'label' => esc_html__( 'Individual', 'bloomerangaddon' ),
+								'value' => 'Individual'
+							),
+							array(
+								'label' => esc_html__( 'Organization', 'bloomerangaddon' ),
+								'value' => 'Organization'
+							)
 						),
+						'tooltip'  	=> esc_html__( 'Bloomerang requires that all constituents are added as either an individual or organization.', 'bloomerangaddon' )
 					),
 					array(
-						'name'      => 'mappedFields',
-						'label'     => esc_html__( 'Map Fields', 'simplefeedaddon' ),
+						'name'      => 'consituentFields',
+						'label'     => esc_html__( 'Map Fields', 'bloomerangaddon' ),
 						'type'      => 'field_map',
+						'tooltip'   => esc_html__( 'Select which Gravity Form fields pair with their respective Bloomerang constituent fields.<br><br>For custom fields, make sure you write the exact name of the custom field and only allow the possible Bloomerang values on the form. For example, if the custom field in Bloomerang is a dropdown, you need to match the dropdown options in Gravity Forms.<br><br>If you don\'t want to map a field then leave the "Form Field" dropdown set to "Select a Field".', 'bloomerangaddon' ),
 						'field_map' => array(
 							array(
-								'name'       => 'email',
-								'label'      => esc_html__( 'Email', 'simplefeedaddon' ),
-								'required'   => 0,
-								'field_type' => array( 'email', 'hidden' ),
-								'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
+								'name'          => 'LastName',
+								'label'         => esc_html__( 'Last Name', 'bloomerangaddon' ),
+								'required'      => true,
+								'field_type'    => array( 'name', 'text', 'hidden' ),
+								'default_value' => '',
 							),
 							array(
-								'name'     => 'name',
-								'label'    => esc_html__( 'Name', 'simplefeedaddon' ),
-								'required' => 0,
+								'name'          => 'FullName',
+								'label'         => esc_html__( 'Organization Name', 'bloomerangaddon' ),
+								'required'      => true,
+								'field_type'    => array( 'name', 'text', 'hidden' ),
+								'dependency' 	=> array( 'field' => 'type', 'values' => array( 'Organization' ) )
 							),
-							array(
-								'name'       => 'phone',
-								'label'      => esc_html__( 'Phone', 'simplefeedaddon' ),
-								'required'   => 0,
-								'field_type' => 'phone',
-							),
-						),
+						)
 					),
-					array(
-						'name'           => 'condition',
-						'label'          => esc_html__( 'Condition', 'simplefeedaddon' ),
-						'type'           => 'feed_condition',
-						'checkbox_label' => esc_html__( 'Enable Condition', 'simplefeedaddon' ),
-						'instructions'   => esc_html__( 'Process this simple feed if', 'simplefeedaddon' ),
-					),
-				),
-			),
+				)
+			)
 		);
 	}
 
