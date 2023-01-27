@@ -42,6 +42,31 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 
 	}
 
+	public function init_admin() {
+		parent::init_admin();
+
+		add_filter( 'gform_form_settings_fields', array( $this, 'form_settings_filter_test' ), 10, 2 );
+	}
+
+	public function form_settings_filter_test( $sections, $form ) {
+		$sections[] = array(
+
+				'title'  => esc_html__( 'Simple Add-On Form', 'simplefeedaddon' ),
+				'fields' => array(
+					array(
+						'name'    => 'textbox',
+						'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
+						'label'   => esc_html__( 'This should only be on the Simple Feed add-on settings tab', 'simplefeedaddon' ),
+						'type'    => 'text',
+						'class'   => 'small',
+					),
+				),
+
+		);
+
+		return $sections;
+	}
+
 
 	// # FEED PROCESSING -----------------------------------------------------------------------------------------------
 
