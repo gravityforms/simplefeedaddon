@@ -56,7 +56,7 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 					array(
 						'name'    => 'textbox',
 						'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
-						'label'   => esc_html__( 'This should only be on the Simple Feed add-on settings tab', 'simplefeedaddon' ),
+						'label'   => esc_html__( 'This should only be on main form settings tab', 'simplefeedaddon' ),
 						'type'    => 'text',
 						'class'   => 'small',
 					),
