@@ -14,6 +14,7 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 
 	private static $_instance = null;
 
+
 	/**
 	 * Get an instance of this class.
 	 *
@@ -40,12 +41,15 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 			)
 		);
 
+
+
 	}
 
 	public function init_admin() {
 		parent::init_admin();
 
 		add_filter( 'gform_form_settings_fields', array( $this, 'form_settings_filter_test' ), 10, 2 );
+		add_filter( 'gform_form_addon_settings_fields', array( $this, 'form_addon_settings_filter_test' ), 10, 2 );
 	}
 
 	public function form_settings_filter_test( $sections, $form ) {
@@ -61,6 +65,25 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 						'class'   => 'small',
 					),
 				),
+
+		);
+
+		return $sections;
+	}
+
+	public function form_addon_settings_filter_test( $sections, $form ) {
+		$sections[] = array(
+
+			'title'  => esc_html__( 'Simple Add-On Form', 'simplefeedaddon' ),
+			'fields' => array(
+				array(
+					'name'    => 'textbox',
+					'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
+					'label'   => esc_html__( 'This will appear on all setting tabs for addons that override the form_settings_fields method.', 'simplefeedaddon' ),
+					'type'    => 'text',
+					'class'   => 'small',
+				),
+			),
 
 		);
 
