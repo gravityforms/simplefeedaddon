@@ -49,7 +49,7 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 		parent::init_admin();
 
 		add_filter( 'gform_form_settings_fields', array( $this, 'form_settings_filter_test' ), 10, 2 );
-		add_filter( 'gform_form_addon_settings_fields', array( $this, 'form_addon_settings_filter_test' ), 10, 2 );
+		add_filter( 'gform_addon_form_settings_fields', array( $this, 'form_addon_settings_filter_test' ), 10, 2 );
 	}
 
 	public function form_settings_filter_test( $sections, $form ) {
