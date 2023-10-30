@@ -4,13 +4,13 @@ GFForms::include_feed_addon_framework();
 
 class GFSimpleFeedAddOn extends GFFeedAddOn {
 
-	protected $_version = GF_SIMPLE_FEED_ADDON_VERSION;
+	protected $_version                  = GF_SIMPLE_FEED_ADDON_VERSION;
 	protected $_min_gravityforms_version = '1.9.16';
-	protected $_slug = 'simplefeedaddon';
-	protected $_path = 'simplefeedaddon/simplefeedaddon.php';
-	protected $_full_path = __FILE__;
-	protected $_title = 'Gravity Forms Simple Feed Add-On';
-	protected $_short_title = 'Simple Feed Add-On';
+	protected $_slug                     = 'simplefeedaddon';
+	protected $_path                     = 'simplefeedaddon/simplefeedaddon.php';
+	protected $_full_path                = __FILE__;
+	protected $_title                    = 'Gravity Forms Simple Feed Add-On';
+	protected $_short_title              = 'Simple Feed Add-On';
 
 	private static $_instance = null;
 
@@ -36,7 +36,7 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 
 		$this->add_delayed_payment_support(
 			array(
-				'option_label' => esc_html__( 'Subscribe contact to service x only when payment is received.', 'simplefeedaddon' )
+				'option_label' => esc_html__( 'Subscribe contact to service x only when payment is received.', 'simplefeedaddon' ),
 			)
 		);
 
@@ -204,6 +204,12 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 						'class'   => 'small',
 					),
 					array(
+						'label'   => esc_html__( 'Encrypted text', 'simplefeedaddon' ),
+						'type'    => 'text',
+						'name'    => 'encryptedtext',
+						'encrypt' => true,
+					),
+					array(
 						'label'   => esc_html__( 'My checkbox', 'simplefeedaddon' ),
 						'type'    => 'checkbox',
 						'name'    => 'mycheckbox',
@@ -225,7 +231,7 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 								'label'      => esc_html__( 'Email', 'simplefeedaddon' ),
 								'required'   => 0,
 								'field_type' => array( 'email', 'hidden' ),
-								'tooltip' => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
+								'tooltip'    => esc_html__( 'This is the tooltip', 'simplefeedaddon' ),
 							),
 							array(
 								'name'     => 'name',
