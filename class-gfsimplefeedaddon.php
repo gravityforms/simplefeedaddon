@@ -210,6 +210,13 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 						'encrypt' => true,
 					),
 					array(
+						'name'          => 'user',
+						'label'         => esc_html__( 'User', 'simplefeedaddon' ),
+						'type'          => 'user_select',
+						'required'      => false,
+						'default_value' => 'logged-in-user',
+					),
+					array(
 						'label'   => esc_html__( 'My checkbox', 'simplefeedaddon' ),
 						'type'    => 'checkbox',
 						'name'    => 'mycheckbox',
