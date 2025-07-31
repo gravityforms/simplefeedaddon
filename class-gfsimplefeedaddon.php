@@ -231,7 +231,7 @@ class GFSimpleFeedAddOn extends GFFeedAddOn {
 					array(
 						'name'      => 'mappedFields',
 						'label'     => esc_html__( 'Map Fields', 'simplefeedaddon' ),
-						'type'      => 'field_map',
+						'type'      => 'generic_map',
 						'field_map' => array(
 							array(
 								'name'       => 'email',
